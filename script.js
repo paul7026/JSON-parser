@@ -1,5 +1,5 @@
 async function getResponse() {
-  let response = await fetch("/colorsheme.json");
+  let response = await fetch("/signup.json");
   let obj = await response.json();
   const form = document.querySelector("#form");
   const refBlock = document.querySelector("#references");
