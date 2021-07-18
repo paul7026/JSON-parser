@@ -1,5 +1,17 @@
 async function getResponse() {
-  let response = await fetch("/signup.json");
+  const chosenButtons = document.querySelectorAll(".footer__button");
+  chosenButtons.forEach((el) => {
+    el.addEventListener("click", changeUrl);
+    console.log(el);
+  });
+  // const inrerviewButton = document.querySelector("#interview");
+  // const colorButton = document.querySelector("#color");
+  // const addPostButton = document.querySelector("#add-post");
+  // const signInButton = document.querySelector("#sign-in");
+  // const signUPButton = document.querySelector("#sign-up");
+  // inrerviewButton.addEventListener("click", changeJson);
+
+  let response = await fetch(changeUrl());
   let obj = await response.json();
   const form = document.querySelector("#form");
   const refBlock = document.querySelector("#references");
@@ -39,8 +51,8 @@ async function getResponse() {
       input.placeholder = field.input.placeholder;
     }
     //input prop end
-    form.append(label);
-    form.append(input);
+    form.prepend(label);
+    form.prepend(input);
   }
 
   function addRef(ref) {
@@ -66,6 +78,13 @@ async function getResponse() {
     buttons.className = "button";
     buttons.textContent = button.text;
     buttonsBlock.append(buttons);
+  }
+
+  function changeUrl(event) {
+    let url = "signup.json";
+    // url = event.currentTarget.value;
+    // console.log(event.currentTarget.value);
+    return url;
   }
 }
 
