@@ -872,3 +872,82 @@ input.checkbox:checked:after {
     padding: 1em 0 0;
   }
 }
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer__title {
+  font-size: 1.5em;
+  color: #fff;
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+
+.footer__box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer__button {
+  width: 100px;
+  height: 40px;
+  background-color: white;
+  outline: none;
+  border: none;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.footer__button:last-child {
+  margin-right: 0;
+}
+
+.footer__button:hover,
+.button:hover {
+  color: white;
+  background-color: #000;
+}
+
+.footer__button:focus,
+.button:focus {
+  color: white;
+  background-color: #000;
+}
+
+.form__lable {
+  color: black;
+  width: 100%;
+  display: flex;
+  margin-bottom: 3px;
+  margin-top: 13px;
+}
+.button {
+  width: 150px;
+  font-size: 16px;
+  height: 30px;
+  margin-bottom: 10px;
+  outline: none;
+  border: none;
+}
+.form__ref {
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.form__title-ref {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.form__ref-box {
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form__ref-block {
+  display: flex;
+}

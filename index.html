@@ -24,31 +24,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="main-agileinfo">
       <div class="agileits-top">
         <form action="#" method="post" id="form">
-          <!-- <input class="text" type="text" name="Username" placeholder="Username" required="">
-          <input class="text email" type="email" name="email" placeholder="Email" required="">
-          <input class="text" type="password" name="password" placeholder="Password" required="">
-          <input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
-          <div class="wthree-text">
-            <label class="anim">
-              <input type="checkbox" class="checkbox" required="">
-              <span>I Agree To The Terms & Conditions</span>
-            </label>
-            <div class="clear"> </div>
-          </div>
-          <input type="submit" value="SIGNUP"> -->
 					<div id="references"></div>
-					<div id="buttons"></div>
+					<!-- <div id="buttons"></div> -->
         </form>
       </div>
     </div>
     <!-- copyright -->
-		<div>
-			<h2>Choose input JSON</h2>
-			<button class="footer__button" id="interview" value="/interview.json">Interview</button>
-			<button class="footer__button" id="color" value="/colorsheme.json">Color</button>
-			<button class="footer__button" id="add-post" value="addpost.json">Addpost</button>
-			<button class="footer__button" id="sign-in" value='/signin.json'>SignIn</button>
-			<button class="footer__button" id="sign-up" value="/signup.json">SignUp</button> 
+		<div class="footer">
+			<h2 class= "footer__title">Choose input JSON</h2>
+      <div class="footer__box">
+        <button class="footer__button" id="interview" data-url="/JSON/interview.json">Interview</button>
+			  <button class="footer__button" id="color" data-url="/JSON/colorsheme.json">Color</button>
+			  <button class="footer__button" id="add-post" data-url="/JSON/addpost.json">Addpost</button>
+			  <button class="footer__button" id="sign-in" data-url='/JSON/signin.json'>SignIn</button>
+			  <button class="footer__button" id="sign-up" data-url="/JSON/signup.json">SignUp</button> 
+      </div>
 		</div>
     <!-- //copyright -->
     <ul class="colorlib-bubbles">
@@ -64,7 +54,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <li></li>
     </ul> 
 	</div>
-	<script src="script.js"></script>
+	<script src="main.js"></script>
 </body>
 </html>
 
