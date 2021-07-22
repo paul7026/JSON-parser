@@ -75,10 +75,10 @@ function chooseLink(ref) {
         buttonBox.innerHTML = "";
         inputBloks.innerHTML = "";
         if (link.id === "signin") {
-          fetchUrl("JSON/signin.json");
+          fetchUrl("../JSON/signin.json");
         }
         if (link.id === "signup") {
-          fetchUrl("JSON/signup.json");
+          fetchUrl("../JSON/signup.json");
         }
       });
     });
