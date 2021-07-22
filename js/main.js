@@ -71,11 +71,14 @@ function chooseLink(ref) {
         e.preventDefault();
         form.innerHTML = "";
         main.removeChild(main.firstChild);
+        refBox.innerHTML = "";
+        buttonBox.innerHTML = "";
+        inputBloks.innerHTML = "";
         if (link.id === "signin") {
-          fetchUrl("../JSON/signin.json");
+          fetchUrl("JSON/signin.json");
         }
         if (link.id === "signup") {
-          fetchUrl("../JSON/signup.json");
+          fetchUrl("JSON/signup.json");
         }
       });
     });
