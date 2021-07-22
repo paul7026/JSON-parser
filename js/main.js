@@ -11,10 +11,19 @@ class DbApi {
 const main = document.querySelector("#mains");
 const form = document.querySelector("#form");
 const chosenButtons = document.querySelectorAll(".footer__button");
+let inputBloks = document.createElement("div");
+inputBloks.classList = "input__blocks";
+let refBox = document.createElement("div");
+refBox.classList = "form__ref-box";
+let buttonBox = document.createElement("div");
+buttonBox.classList = "button__box";
 
 chosenButtons.forEach((el) => {
   el.addEventListener("click", function (e) {
     form.innerHTML = "";
+    inputBloks.innerHTML = "";
+    refBox.innerHTML = "";
+    buttonBox.innerHTML = "";
     main.removeChild(main.firstChild);
     let url = e.target.dataset.url;
     fetchUrl(url);
@@ -27,13 +36,13 @@ function fetchUrl(url) {
   dbApi
     .getDbData(url)
     .then((obj) => {
-      const name = document.createElement("h1");
+      let name = document.createElement("h1");
       name.textContent = obj.name;
       name.classList = "main__title";
       main.prepend(name);
-      // let refBox = document.createElement("div");
-      // refBox.classList = "form__ref-box";
-      // form.append(refBox);
+      form.appendChild(inputBloks);
+      form.appendChild(refBox);
+      form.appendChild(buttonBox);
       const { fields, references, buttons } = obj;
       if (fields) {
         fields.forEach((field, id) => {
@@ -42,7 +51,6 @@ function fetchUrl(url) {
       }
       if (references) {
         references.forEach((ref) => {
-          // form.append(refBox);
           addRef(ref);
         });
       }
@@ -64,10 +72,10 @@ function chooseLink(ref) {
         form.innerHTML = "";
         main.removeChild(main.firstChild);
         if (link.id === "signin") {
-          fetchUrl("JSON/signin.json");
+          fetchUrl("../JSON/signin.json");
         }
         if (link.id === "signup") {
-          fetchUrl("JSON/signup.json");
+          fetchUrl("../JSON/signup.json");
         }
       });
     });
@@ -84,19 +92,18 @@ function preventDef() {
 }
 
 function addInput(field, id) {
-  const label = document.createElement("label");
+  let label = document.createElement("label");
   label.classList = "form__lable";
-  const input = document.createElement("input");
+  let input = document.createElement("input");
   label.textContent = field.label;
   label.htmlFor = id;
-  //input prop start
   input.className = "text";
   input.type = field.input.type;
   input.required = field.input.required;
   input.id = id;
-  !!!field.input.placeholder
-    ? (input.placeholder = "")
-    : (input.placeholder = field.input.placeholder);
+  field.input.placeholder
+    ? (input.placeholder = field.input.placeholder)
+    : input.removeAttribute("placeholder");
 
   if (field.input.colors) {
     let list = "color";
@@ -116,8 +123,8 @@ function addInput(field, id) {
     input.multiple = field.input.multiple;
   }
 
-  form.append(label);
-  form.append(input);
+  inputBloks.append(label);
+  inputBloks.append(input);
 
   if (field.input.mask) {
     input.type = "text";
@@ -127,13 +134,10 @@ function addInput(field, id) {
     var mask = IMask(input, maskOptions);
   }
 
-  // тип файла
-  // if (field.input.type === "file") {
-  //   let filetype = field.input.filetype;
-  //   filetype.forEach((file) => {
-  //     input.accept = field.input.filetype;
-  //   });
-  // }
+  if (input.type === "checkbox") {
+    label.classList = "label-check";
+    label.prepend(input);
+  }
 
   if (field.input.type === "textarea") {
     let textarea = document.createElement("textarea");
@@ -154,43 +158,52 @@ function addInput(field, id) {
       select.appendChild(option);
     });
   }
+  if (input.type === "file") {
+    input.classList = "input__file";
+    label.classList = "form__lable, form__label_file";
+    if (field.input.filetype) {
+      field.input.filetype.forEach((file) => {
+        input.accept += `.${file}, `;
+      });
+      input.accept = input.accept.replace(/,(\s+)?$/, "");
+    }
+  }
 }
 
 function addButton(button) {
-  const buttonsBlock = document.createElement("div");
-  form.append(buttonsBlock);
-  const buttons = document.createElement("button");
+  let buttons = document.createElement("button");
   buttons.className = "button";
   buttons.textContent = button.text;
-  buttonsBlock.append(buttons);
+  buttonBox.append(buttons);
   preventDef();
 }
 
 function addRef(ref) {
-  const refBlock = document.createElement("div");
-  refBlock.classList = "form__ref-block";
-  form.append(refBlock);
   let references = document.createElement("div");
   references.classList = "form__ref";
 
   if (ref.text) {
-    const text = document.createElement("p");
-    text.classList = "form__title-ref";
-    text.textContent = ref["text without ref"];
+    if (ref["text without ref"]) {
+      let text = document.createElement("p");
+      text.classList = "form__title-ref";
+      text.textContent = ref["text without ref"];
+      refBox.append(text);
+    }
+
     let link = document.createElement("a");
     link.textContent = ref.text;
     link.href = ref.ref;
     link.classList = "link";
     link.id = ref.ref;
-    refBlock.append(text);
-    refBlock.append(link);
+
+    refBox.append(link);
   }
   if (ref.input) {
     const inputRef = document.createElement("input");
     inputRef.type = ref.input.type;
     inputRef.required = ref.input.required;
     inputRef.checked = +ref.input.checked;
-    refBlock.append(inputRef);
+    refBox.append(inputRef);
   }
   chooseLink(ref);
 }

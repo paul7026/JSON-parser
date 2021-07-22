@@ -240,10 +240,17 @@ h1 {
   padding: 3em;
 }
 
+.input__textarea {
+  width: 70%;
+  height: 150px;
+}
+
 input[type="text"],
 input[type="email"],
-input[type="password"] {
-  font-size: 0.9em;
+input[type="password"],
+input[type="number"],
+select {
+  font-size: 1em;
   color: #fff;
   font-weight: 100;
   width: 94.5%;
@@ -260,6 +267,10 @@ input[type="password"] {
   background-repeat: no-repeat;
   color: #fff;
   font-family: "Roboto", sans-serif;
+}
+
+select {
+  width: 50%;
 }
 
 input.email,
@@ -361,15 +372,15 @@ input[type="submit"]:hover {
 input.checkbox {
   background: #8dc26f;
   cursor: pointer;
-  width: 1.2em;
-  height: 1.2em;
+  width: 1.5em;
+  height: 1.5em;
 }
 
 input.checkbox:before {
   content: "";
   position: absolute;
-  width: 1.2em;
-  height: 1.2em;
+  width: 1.5em;
+  height: 1.5em;
   background: inherit;
   cursor: pointer;
 }
@@ -380,8 +391,8 @@ input.checkbox:after {
   top: 0px;
   left: 0;
   z-index: 1;
-  width: 1.2em;
-  height: 1.2em;
+  width: 1.5em;
+  height: 1.5em;
   border: 1px solid #fff;
   -webkit-transition: 0.4s ease-in-out;
   -moz-transition: 0.4s ease-in-out;
@@ -631,7 +642,8 @@ input.checkbox:checked:after {
 @media (max-width: 1440px) {
   input[type="text"],
   input[type="email"],
-  input[type="password"] {
+  input[type="password"],
+  input[type="number"] {
     width: 94%;
   }
 }
@@ -689,7 +701,8 @@ input.checkbox:checked:after {
 
   input[type="text"],
   input[type="email"],
-  input[type="password"] {
+  input[type="password"],
+  input[type="number"] {
     width: 93%;
   }
 }
@@ -754,7 +767,8 @@ input.checkbox:checked:after {
 
   input[type="text"],
   input[type="email"],
-  input[type="password"] {
+  input[type="password"],
+  input[type="number"] {
     width: 91%;
   }
 
@@ -834,7 +848,8 @@ input.checkbox:checked:after {
 
   input[type="text"],
   input[type="email"],
-  input[type="password"] {
+  input[type="password"],
+  input[type="number"] {
     width: 89.5%;
     font-size: 0.85em;
   }
@@ -918,8 +933,50 @@ input.checkbox:checked:after {
   width: 100%;
   display: flex;
   margin-bottom: 3px;
-  margin-top: 13px;
+  margin-top: 25px;
+  font-size: 1.5em;
+  color: white;
 }
+
+.form__label_file {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  margin-top: 25px;
+  width: 70%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  outline: none;
+  text-align: center;
+}
+
+.form__label_file:focus,
+.form__label_file:hover {
+  background-color: #000;
+  color: white;
+}
+
+.button__box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button__box button {
+  width: 110px;
+  height: 40px;
+}
+.input__file {
+  display: none;
+}
+.input__blocks {
+  display: flex;
+  flex-direction: column;
+}
+
 .button {
   width: 150px;
   font-size: 16px;
@@ -927,6 +984,10 @@ input.checkbox:checked:after {
   margin-bottom: 10px;
   outline: none;
   border: none;
+}
+.label-check {
+  margin-top: 20px;
+  font-size: 1.2em;
 }
 .form__ref {
   display: flex;
@@ -937,14 +998,25 @@ input.checkbox:checked:after {
 .form__title-ref {
   margin-right: 10px;
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 .form__ref-box {
   display: flex;
   margin-top: 15px;
   margin-bottom: 15px;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 
 .form__ref-block {
   display: flex;
+}
+
+.link:first-child {
+  margin-right: 15px;
+}
+
+.link {
+  margin-top: 10px;
 }
